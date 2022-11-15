@@ -6,3 +6,4 @@ if (file_exists(__DIR__."/.env"))
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load(); //все параметры окружения помещаются в массив $_ENV
 }
+phpinfo();
