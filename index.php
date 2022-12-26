@@ -1,8 +1,14 @@
 <?php
-require __DIR__ . '/vendor/autoload.php'; //загрузка всех установленных библиотек
-use dotenv\Dotenv;                        //импорт класса Dotenv из пространства имен dotenv
-if (file_exists(__DIR__."/.env"))
-{
-    $dotenv = Dotenv::createImmutable(__DIR__);
-    $dotenv->load(); //все параметры окружения помещаются в массив $_ENV
-}
+//Мета-данные страницы
+require('pages/meta.php');
+
+//Функциональные файлы
+require('components/dbconnect.php');
+require('pages/auth.php');
+require('pages/settings.php');
+require('components/password_change.php');
+require('components/record_delete.php');
+
+//Отрисовка страницы
+require('pages/page.php');
+
