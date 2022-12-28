@@ -1,14 +1,13 @@
-<div class="inputZone">
-
+<div class="container">
     <?php
 
-//    Сообщение от сервера
+    //    Сообщение от сервера
     if($_SESSION['warning_message'])
     {
-        echo('<div class="container warning" style="margin-bottom: 1rem">'.$_SESSION['warning_message'].'</div>');
+        echo('<div class="container"><button  type="button" class="btn btn-warning mb-4 ml-2 container" disabled>'.$_SESSION['warning_message'].'</button></div>');
     }
 
-//    Страница профиля
+    //    Страница профиля
     if($_GET['profile'])
     {
         if(!$_SESSION['id_auth_user'])
@@ -17,7 +16,7 @@
         }
         unset($_SESSION['warning_message']);
 
-        require('components/profile.php');
+        require('pages/profile.php');
     }
 
 //    Страница регистрации
@@ -29,7 +28,7 @@
         }
         unset($_SESSION['warning_message']);
 
-        require('components/register_form.php');
+        require('pages/register_form.php');
     }
 
 //    Страница логина
@@ -41,19 +40,36 @@
         }
         unset($_SESSION['warning_message']);
 
-        require('components/login_form.php');
+        require('pages/login_form.php');
     }
 
-//    Страница всех рекордов
-    elseif($_GET['records'])
+    elseif($_GET['tasks'])
     {
-        require('components/records_list.php');
+        if(!$_SESSION['id_auth_user'])
+        {
+            header('Location: index.php?login=1');
+        }
+        unset($_SESSION['warning_message']);
+
+        require('pages/tasks_list.php');
     }
+
+    elseif($_GET['friends'])
+    {
+        if(!$_SESSION['id_auth_user'])
+        {
+            header('Location: index.php?login=1');
+        }
+        unset($_SESSION['warning_message']);
+
+        require('pages/friends_list.php');
+    }
+
 
 //    Страница информации о странице
     elseif($_GET['info'])
     {
-        require('components/info.php');
+        require('pages/info.php');
     }
 
 //    Главная страница набора текста
@@ -64,8 +80,7 @@
             header('Location: index.php');
             die;
         }
-        require('components/typing_form.php');
+        require('pages/home.php');
     }
     ?>
-
 </div>

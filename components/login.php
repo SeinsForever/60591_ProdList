@@ -1,6 +1,6 @@
 <?php
 
-$result = $conn->query("SELECT * FROM users WHERE login='".strtolower($_POST['login'])."'");
+$result = $conn->query("SELECT * FROM Persona WHERE login='".strtolower($_POST['login'])."'");
 
 if($row = $result->fetch())
 {
@@ -11,30 +11,17 @@ if($row = $result->fetch())
         $_SESSION['id_auth_user'] = $row['id'];
         $_SESSION['login'] = $row['login'];
 
-        //загрузка настроек пользователя
-        $resultSettings = $conn->query("SELECT * FROM settings 
-                                        WHERE id_user='".$_SESSION['id_auth_user']."'");
-        if(!$rowSettings = $resultSettings->fetch())
-        {
-            $conn->query("INSERT INTO settings (id_user)
-                                VALUES ('".$_SESSION['id_auth_user']."')");
-            $resultSettings = $conn->query("SELECT * FROM settings
-                                                WHERE id_user='".$_SESSION['id_auth_user']."'");
-            $rowSettings = $resultSettings->fetch();
-        }
-        $_SESSION['language'] = $rowSettings['language'];
-
         header('Location: index.php');
     }
     else
     {
-        $_SESSION['warning_message'] = 'Неверный пароль';
+        $_SESSION['warning_message'] = 'Wrong password';
         header('Location: ../index.php?login=1');
     }
 }
 else
 {
-    $_SESSION['warning_message'] = 'Неверный логин';
+    $_SESSION['warning_message'] = 'Wrong login';
     header('Location: ../index.php?login=1');
 }
 

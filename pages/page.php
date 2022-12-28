@@ -2,16 +2,12 @@
 <div class="data-php" data-language="<?= $_SESSION['language'] ?>"
      data-idUser="<?= $_SESSION['id_auth_user']; ?>"></div>
 
-<body id="body">
-    <div class="display">
-        <div class="centerWrapper">
+<body class="container">
 
-            <?php
-            require('header.php');
-            require('main.php');
-            require('footer.php');
-            ?>
+    <?php
+    require('header.php');
+    require('mainPage.php');
+    require('footer.php');
+    ?>
 
-        </div>
-    </div>
 </body>

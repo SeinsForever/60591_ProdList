@@ -9,12 +9,12 @@ if($_POST['oldPassword'])
         exit();
     }
 
-    $result = $conn->query("SELECT * FROM users WHERE id='".$_SESSION['id_auth_user']."'");
+    $result = $conn->query("SELECT * FROM Persona WHERE id='".$_SESSION['id_auth_user']."'");
     $row = $result->fetch();
 
     if($row['password'] == md5($_POST['oldPassword']))
     {
-        $conn->query("UPDATE users SET 
+        $conn->query("UPDATE Persona SET 
                        password = '".md5($_POST['newPassword'])."'
                        WHERE id = ".$_SESSION['id_auth_user']);
 
@@ -23,7 +23,7 @@ if($_POST['oldPassword'])
     }
     else
     {
-        $_SESSION['warning_message'] = 'Wrong password';
+        $_SESSION['warning_message'] = 'Wrong old password';
         header('Location: ../index.php?profile=1');
     }
 }
