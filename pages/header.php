@@ -8,9 +8,9 @@
     </a>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="/" class="nav-link px-2 link-dark">Home</a></li>
         <li><a href="../index.php?tasks=1" class="nav-link px-2 link-dark">Tasks</a></li>
-        <li><a href="../index.php?friends=1" class="nav-link px-2 link-dark">Friends</a></li>
+        <li><a href="../index.php?activities=1" class="nav-link px-2 link-dark">Activities</a></li>
         <li><a href="../index.php?info=1" class="nav-link px-2 link-dark">About</a></li>
     </ul>
 
@@ -20,7 +20,7 @@
         <?php
         if($_SESSION['username'])
         {
-            echo('<a class="btn btn-outline-primary me-2" href="../index.php?profile=1" role="button">Profile</a>');
+            echo('<a class="btn btn-outline-primary me-2" href="../index.php?profile=1" role="button">'.$_SESSION['login'].'</a>');
             echo('<a class="btn btn-outline-primary me-2" href="../index.php?logout=1" role="button">Logout</a>');
         }
         else

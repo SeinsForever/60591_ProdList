@@ -54,15 +54,9 @@
         require('pages/tasks_list.php');
     }
 
-    elseif($_GET['friends'])
+    elseif($_GET['activities'])
     {
-        if(!$_SESSION['id_auth_user'])
-        {
-            header('Location: index.php?login=1');
-        }
-        unset($_SESSION['warning_message']);
-
-        require('pages/friends_list.php');
+        require('pages/activities.php');
     }
 
 
@@ -72,7 +66,6 @@
         require('pages/info.php');
     }
 
-//    Главная страница набора текста
     else
     {
         if($_GET)

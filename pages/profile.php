@@ -2,7 +2,9 @@
 
 $limit = 5;
 
-$resultTypeOfActivity = $conn->query("SELECT id, id_persona, name, max_score
+$resultActivity = $conn->query("SELECT id
+    FROM activity WHERE id_persona = ".$_SESSION['id_auth_user']);
+$resultTypeOfActivity = $conn->query("SELECT id, id_persona, name, dimension
     FROM TypeOfActivity ORDER BY name");
 $imageSrc = $conn->query("SELECT img_src
     FROM Persona WHERE id = ".$_SESSION['id_auth_user']);
@@ -52,29 +54,44 @@ $imageSrc = $conn->query("SELECT img_src
     <h3>
         Let's watch on your records:
     </h3>
+    <?php
+    if($resultActivity->rowCount() > 0)
+    {
+    ?>
     <ol>
-        <?php while($rowRecord = $resultTypeOfActivity->fetch()) {?>
+        <?php
+        while($rowRecord = $resultTypeOfActivity->fetch())
+        {
+
+            $findRecord = $conn->query("SELECT score, date
+                        FROM activity WHERE id_persona = ".$_SESSION['id_auth_user']." AND id_TypeOfActivity = ".$rowRecord['id']."  ORDER BY score DESC LIMIT 1");
+            if($findRecord->rowCount() == 1)
+            {
+                ?>
             <li>
+
                 <h3><?= $rowRecord['name'] ?></h3>
 
                 <h4 class="ps-3"> Score:
                 <?php
-                $findRecord = $conn->query("SELECT score, date
-                    FROM activity WHERE id_persona = ".$_SESSION['id_auth_user']." AND id_TypeOfActivity = ".$rowRecord['id']."  ORDER BY score DESC LIMIT 1");
-                if($findRecord->rowCount() == 1)
-                {
-                    $findRecord=$findRecord->fetch();
-                    echo($findRecord['score']." | ".$findRecord['date']);
-                }
-                else
-                {
-                    echo("No activity :(");
-                }
+                        $findRecord=$findRecord->fetch();
+                        echo($findRecord['score']." | ".$findRecord['date']);
                 ?>
                 </h4>
-
             </li>
-        <?php }; ?>
+        <?php
+            }
+        }
+        ?>
     </ol>
+    <?php
+    }
+    else
+    {
+    ?>
+        <h4>No records :( <br>You can add your first activity <a href="../index.php?tasks=1" class="link-primary">here</a></h4>
+    <?php
+    }
+    ?>
 
 </div>

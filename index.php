@@ -1,4 +1,5 @@
 <?php
+$dimensions = array('reps', 'Kg', 'g', 'm', 'Km', 'hh', 'mm', 'ss', 'DD', 'MM', 'YY');
 //Мета-данные страницы
 require('pages/meta.php');
 
