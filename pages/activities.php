@@ -44,12 +44,20 @@ else
                     <li>
                         <?php
                         $resultUser = $conn->query("SELECT name FROM Persona 
-                                        WHERE id=".$rowRecord['id_persona']);
-                        $resultActivity = $conn->query("SELECT name FROM TypeOfActivity 
-                                        WHERE id=".$rowRecord['id_TypeOfActivity']);?>
-                        <h3><?= $resultUser->fetch()['name'] ?></h3>
-                        <h4 class="ps-3"><?= $resultActivity->fetch()['name'] ?> | Score: <?= $rowRecord['score'] ?> | <?= $rowRecord['date'] ?></h4>
+                                WHERE id=".$rowRecord['id_persona']);
+                        $resultActivity = $conn->query("SELECT name, dimension FROM TypeOfActivity 
+                                WHERE id=".$rowRecord['id_TypeOfActivity']);
+                        $resultActivity = $resultActivity->fetch();?>
 
+                        <div class="card border-dark mb-3" >
+                            <div class="card-header"><?= $resultUser->fetch()['name'] ?>, <small class="text-muted"><em><?= $rowRecord['date'] ?></em></small></div>
+                            <div class="card-body text-dark">
+                                <h4 class="card-title"><?= $rowRecord['score'] ?><small><small><?= $dimensions[$resultActivity['dimension']] ?></small></small> <?= $resultActivity['name'] ?></h4>
+                                <?php if($rowRecord['comment']) { ?>
+                                    <p class="card-text"><?= $rowRecord['comment'] ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
                     </li>
                 <?php }; ?>
             </ol>
