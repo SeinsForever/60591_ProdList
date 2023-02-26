@@ -11,17 +11,17 @@ if($row = $result->fetch())
         $_SESSION['id_auth_user'] = $row['id'];
         $_SESSION['login'] = $row['login'];
 
-        header('Location: index.php');
+        header('Location: task.php');
     }
     else
     {
         $_SESSION['warning_message'] = 'Wrong password';
-        header('Location: ../index.php?login=1');
+        header('Location: ../task.php?login=1');
     }
 }
 else
 {
     $_SESSION['warning_message'] = 'Wrong login';
-    header('Location: ../index.php?login=1');
+    header('Location: ../task.php?login=1');
 }
 

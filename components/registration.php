@@ -1,25 +1,27 @@
 <?php
 
+use Framework\Container;
+
 $newLogin = strtolower($_POST['newLogin']);
 
 if(strlen($newLogin) < 3 || strlen($newLogin) > 32)
 {
     $_SESSION['warning_message'] = 'Too long or too short login';
-    header('Location: ../index.php?register=1');
+    header('Location: ../task.php?register=1');
     exit();
 }
 
 if(strlen($_POST['name']) > 32)
 {
     $_SESSION['warning_message'] = 'Too long name';
-    header('Location: ../index.php?register=1');
+    header('Location: ../task.php?register=1');
     exit();
 }
 
 if(strlen($_POST['password']) < 3 || strlen($_POST['password']) > 32)
 {
     $_SESSION['warning_message'] = 'Too long or too short password';
-    header('Location: ../index.php?register=1');
+    header('Location: ../task.php?register=1');
     exit();
 }
 
@@ -29,7 +31,7 @@ $row = $result->fetch();
 if(!empty($row))
 {
     $_SESSION['warning_message'] = 'This login is already taken';
-    header('Location: ../index.php?register=1');
+    header('Location: ../task.php?register=1');
     exit();
 }
 
@@ -71,7 +73,7 @@ try
 catch (PDOException $error)
 {
     $_SESSION['warning_message'] = 'ERROR! Code: ' . $error->getMessage();
-    header('Location: index.php');
+    header('Location: task.php');
     exit();
 }
 
@@ -87,4 +89,4 @@ $_SESSION['login'] = $row['login'];
 
 
 $_SESSION['warning_message'] = 'You has been successfully registered!';
-header('Location: index.php');
+header('Location: task.php');

@@ -12,7 +12,7 @@
     {
         if(!$_SESSION['id_auth_user'])
         {
-            header('Location: index.php?login=1');
+            header('Location: task.php?login=1');
         }
         unset($_SESSION['warning_message']);
 
@@ -24,7 +24,7 @@
     {
         if($_SESSION['id_auth_user'])
         {
-            header('Location: index.php');
+            header('Location: task.php');
         }
         unset($_SESSION['warning_message']);
 
@@ -36,7 +36,7 @@
     {
         if($_SESSION['id_auth_user'])
         {
-            header('Location: index.php');
+            header('Location: task.php');
         }
         unset($_SESSION['warning_message']);
 
@@ -47,7 +47,7 @@
     {
         if(!$_SESSION['id_auth_user'])
         {
-            header('Location: index.php?login=1');
+            header('Location: task.php?login=1');
         }
         unset($_SESSION['warning_message']);
 
@@ -70,7 +70,7 @@
     {
         if($_GET)
         {
-            header('Location: index.php');
+            header('Location: task.php');
             die;
         }
         require('pages/home.php');

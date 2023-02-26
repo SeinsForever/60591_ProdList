@@ -1,12 +1,16 @@
 <?php
+
+use Framework\Container;
 use Framework\Request;
-use Framework\Router;
 use Framework\Application;
+use Framework\Router;
 
 date_default_timezone_set('Asia/Yekaterinburg');
 if ( file_exists(dirname(__FILE__).'/vendor/autoload.php') ) {
     require_once dirname(__FILE__).'/vendor/autoload.php';
 }
+
+//Container::getApp()->run();
 
 $request = new Request();
 Application::init();

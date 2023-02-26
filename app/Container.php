@@ -1,9 +1,14 @@
 <?php
 
+namespace Framework;
+
 use Aws\S3\S3Client;
+use FileUploader;
 
 class Container
 {
+
+
     public static function getS3Client(): S3Client
     {
         $config = self::getS3Config();
@@ -21,7 +26,7 @@ class Container
 
     public static function getS3Config(): \S3ClientConfig
     {
-        return new \S3ClientConfig($_ENV['S3_BUCKET'],$_ENV['S3_ENDPOINT'], 'us-east-1', $_ENV['S3_KEY'],$_ENV['S3_SECRET'],'latest');
+        return new \S3ClientConfig($_ENV['S3_BUCKET'], $_ENV['S3_ENDPOINT'], 'us-east-1', $_ENV['S3_KEY'], $_ENV['S3_SECRET'], 'latest');
 
     }
 
@@ -32,7 +37,7 @@ class Container
 
     public static function getS3FileUploader(): \S3FileUploader
     {
-        return new \S3FileUploader(self::getS3Client(),self::getS3Config());
+        return new \S3FileUploader(self::getS3Client(), self::getS3Config());
     }
 
     public static function getLocalFileUploader(): \LocalFileUploader

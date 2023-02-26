@@ -1,5 +1,8 @@
 <?php
 namespace Framework;
+
+include 'app/Controllers/HelloController.php';
+include 'app/Controllers/TaskController.php';
 //use App\Controllers;
 //use function PHPSTORM_META\elementType;
 

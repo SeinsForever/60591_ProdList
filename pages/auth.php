@@ -5,7 +5,7 @@ session_start();
 if($_GET['logout'])
 {
     session_unset();
-    header('Location: index.php');
+    header('Location: task.php');
 }
 
 //Регистрация

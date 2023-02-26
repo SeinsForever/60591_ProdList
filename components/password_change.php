@@ -5,7 +5,7 @@ if($_POST['oldPassword'])
     if(strlen($_POST['newPassword']) < 3 || strlen($_POST['newPassword']) > 32)
     {
         $_SESSION['warning_message'] = 'Too long or too short new password';
-        header('Location: ../index.php?profile=1');
+        header('Location: ../task.php?profile=1');
         exit();
     }
 
@@ -19,11 +19,11 @@ if($_POST['oldPassword'])
                        WHERE id = ".$_SESSION['id_auth_user']);
 
         $_SESSION['warning_message'] = 'Password has been successfully changed';
-        header('Location: ../index.php?profile=1');
+        header('Location: ../task.php?profile=1');
     }
     else
     {
         $_SESSION['warning_message'] = 'Wrong old password';
-        header('Location: ../index.php?profile=1');
+        header('Location: ../task.php?profile=1');
     }
 }

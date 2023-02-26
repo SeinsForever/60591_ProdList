@@ -20,13 +20,13 @@
         <?php
         if($_SESSION['username'])
         {
-            echo('<a class="btn btn-outline-primary me-2" href="../index.php?profile=1" role="button">'.$_SESSION['login'].'</a>');
-            echo('<a class="btn btn-outline-primary me-2" href="../index.php?logout=1" role="button">Logout</a>');
+            echo('<a class="btn btn-outline-primary me-2" href="../task.php?profile=1" role="button">'.$_SESSION['login'].'</a>');
+            echo('<a class="btn btn-outline-primary me-2" href="../task.php?logout=1" role="button">Logout</a>');
         }
         else
         {
-            echo('<a class="btn btn-outline-primary me-2" href="../index.php?login=1" role="button">Login</a>');
-            echo('<a class="btn btn-outline-primary me-2" href="../index.php?register=1" role="button">Sign-up</a>');
+            echo('<a class="btn btn-outline-primary me-2" href="../task.php?login=1" role="button">Login</a>');
+            echo('<a class="btn btn-outline-primary me-2" href="../task.php?register=1" role="button">Sign-up</a>');
         }
         ?>
     </div>
