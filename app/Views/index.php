@@ -8,15 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Список пользователей:</h1>
-<ul>
-    <?php foreach ($data['users'] as $user): ?>
-        <li>
-            <?=$user->id?>
-            <?=$user->login?>
-            <?=$user->name?>
-        </li>
-    <?php endforeach; ?>
-</ul>
+<h1>Имя <?=$data['name']?></h1>
+<h1>Значение <?=$data['value']?></h1>
 </body>
 </html>

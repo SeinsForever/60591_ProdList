@@ -12,6 +12,7 @@
 <ul>
     <?php foreach ($data['users'] as $user): ?>
         <li>
+            <?=$user->id?>
             <?=$user->login?>
             <?=$user->name?>
         </li>

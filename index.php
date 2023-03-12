@@ -6,6 +6,8 @@ use Framework\Application;
 use Framework\Router;
 use Dotenv\Dotenv;
 
+session_start(["use_strict_mode" => true]);
+
 date_default_timezone_set('Asia/Yekaterinburg');
 if ( file_exists(dirname(__FILE__).'/vendor/autoload.php') ) {
     require_once dirname(__FILE__).'/vendor/autoload.php';
@@ -22,11 +24,7 @@ else {
 }
 
 
-//Container::getApp()->run();
-
-$request = new Request();
-Application::init();
-echo (new Router($request))->getContent();
+Container::getApp()->run();
 
 
 

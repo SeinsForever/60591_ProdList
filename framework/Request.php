@@ -8,6 +8,10 @@ class Request
     private $post_params;
     private $type;
 
+    private $user;
+
+    private $session;
+
     public function __construct()
     {
         $this->path = $_GET['path'];
@@ -16,6 +20,8 @@ class Request
         $this->post_params = $_POST;
         if($_SERVER['REQUEST_METHOD'] === 'POST') $this->type = Route::METHOD_POST;
         if($_SERVER['REQUEST_METHOD'] === 'GET') $this->type = Route::METHOD_GET;
+        $this->session = $_SESSION;
+        $_SESSION['msg'] = null;
     }
 
     /**
@@ -49,5 +55,38 @@ class Request
     {
         return $this->type;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param mixed $session
+     */
+    public function setSession($session): void
+    {
+        $this->session = $session;
+    }
+
 
 }
