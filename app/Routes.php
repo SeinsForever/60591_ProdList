@@ -8,6 +8,7 @@
     Router::addRoute(new Route('user', 'UserController@index', Route::METHOD_GET));
     Router::addRoute(new Route('user/{id}', 'UserController@getById', Route::METHOD_GET));
     Router::addRoute(new Route('task/{taskName}', 'TaskController@task', Route::METHOD_GET));
+    Router::addRoute(new Route('activities', 'ActivitiesController@index', Route::METHOD_GET));
     Router::addRoute(new Route('', 'PageController@index', Route::METHOD_GET));
 
-    echo "Маршруты добавлены<br>";
+//    echo "Маршруты добавлены<br>";

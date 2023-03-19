@@ -16,7 +16,7 @@ class Container
 
     public static function getAuth(): Auth
     {
-        echo ('создан объект Auth ');
+//        echo ('создан объект Auth ');
         return new Auth(self::getRequest());
     }
 

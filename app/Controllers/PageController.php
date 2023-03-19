@@ -16,6 +16,6 @@ class PageController extends Controller
         if ($view)
             return $this->view($view.'.php', ['user' =>  $request->getUser(), 'message' => $request->getSession()['msg']]);
         else
-            return $this->view('hello.php', ['user' =>  $request->getUser(), 'message' => $request->getSession()['msg']]);
+            return $this->view('main.php', ['user' =>  $request->getUser(), 'message' => $request->getSession()['msg']]);
     }
 }
